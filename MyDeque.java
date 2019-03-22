@@ -6,9 +6,18 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    size = 0;
+    start = -1;
+    end = -1;
   }
   public MyDeque(int initialCapacity){
+    if (initialCapacity < 0){
+      throw new IllegalArgumentException("array length < 0");
+    }
     data = (E[])new Object[initialCapacity];
+    size = 0;
+    start = -1;
+    end = -1;
   }
   public int size(){
     int ans = 0;
@@ -20,31 +29,51 @@ public class MyDeque<E>{
     return ans;
   }
   public String toString(){
-    String ans = "";
+    String ans = "{";
     for (int i = 0; i < data.length; i++){
       if (data[i] != null){
-        if (i == data.length-1){
-          ans += data[i] + "}";
-        }
-        else{
-          ans += data[i] + " ";
-        }
+        ans += data[i] + " ";
       }
       else{
-        if (i == data.length-1){
-          ans += " }";
-        }
-        else{
-          ans += "  ";
-        }
+        ans += "  ";
       }
     }
+    ans += "}";
     return ans;
   }
-  public void addFirst(E element){ }
+  public void addFirst(E element){
+    if (size == data.length){
+      resize();
+    }
+    //shift the array one side over
+    if (start != -1){//if the array isn't empty
+
+    }
+  }
   public void addLast(E element){ }
-  public E removeFirst(){ }
-  public E removeLast(){ }
-  public E getFirst(){ }
-  public E getLast(){ }
+  public E removeFirst(){
+    E temp = data[start];
+    data[start] = null;
+    start++;
+    return temp;
+  }
+  public E removeLast(){
+    E temp = data[end];
+    data[end] = null;
+    end--;
+    return temp;
+  }
+  public E getFirst(){
+    return data[start];
+  }
+  public E getLast(){
+    return data[end];
+  }
+  public void resize(){
+    E[] copy = (E[])new Object[data.length*2 + 1];
+    for (int i = 0; i < data.length; i++){
+      copy[i] = data[i];
+    }
+    data = copy;
+  }
 }
