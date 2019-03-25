@@ -365,6 +365,31 @@ public class driver {
 
 
   public static void main(String[]args){
-    
+    MyDeque test1 = new MyDeque();
+    System.out.println("trying toString of no initialCapacity");
+    System.out.println(test1);
+    System.out.println();
+    System.out.println("trying to add a value 1 using addFirst:");
+    test1.addFirst(1);
+    System.out.println(test1);
+    System.out.println();
+    System.out.println("trying to add a value 5 using addLast:");
+    test1.addLast(5);
+    System.out.println(test1);
+    System.out.println();
+    System.out.println("trying to add a value 3 using addLast:");
+    test1.addLast(3);
+    System.out.println(test1);
+    System.out.println();
+    System.out.println("trying to add a value 4 using addFirst:");
+    test1.addFirst(4);
+    System.out.println(test1);
+    System.out.println();
+    System.out.println("trying to getFirst which now should be 4");
+    System.out.println(test1.getFirst());
+    System.out.println();
+    System.out.println("trying to getLast which now should be 3");
+    System.out.println(test1.getLast());
+
   }
 }
