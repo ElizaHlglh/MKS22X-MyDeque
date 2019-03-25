@@ -1,21 +1,25 @@
+import java.util.NoSuchElementException;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
 //no space between the start and the end
-  @SuppressWarnings("unchecked")
   public MyDeque(){
-    data = (E[])new Object[10];
+    @SuppressWarnings("unchecked")
+    E[] d = (E[])new Object[10];
+    data = d;
     size = 0;
     start = -1;
     end = -1;
   }
-  
+
   public MyDeque(int initialCapacity){
     if (initialCapacity < 0){
       throw new IllegalArgumentException("array length < 0");
     }
-    data = (E[])new Object[initialCapacity];
+    @SuppressWarnings("unchecked")
+    E[] d = (E[])new Object[initialCapacity];
+    data = d;
     size = 0;
     start = -1;
     end = -1;
@@ -32,6 +36,9 @@ public class MyDeque<E>{
   }
 
   public String toString(){
+    if (size == 0){
+      return "{}";
+    }
     String ans = "{";
     for (int i = 0; i < data.length; i++){
       if (data[i] != null){
@@ -46,6 +53,9 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
+    if (!(element != null)){
+      throw new NullPointerException("Can't add null to deque!!!");
+    }
     if (start != -1){//if the array isn't empty
       if (size == data.length){
         resize();
@@ -71,6 +81,9 @@ public class MyDeque<E>{
   }
 
   public void addLast(E element){
+    if (!(element != null)){
+      throw new NullPointerException("Can't add null to deque!!!");
+    }
     if (end != -1){
       if (size == data.length){//if full
         resize();
