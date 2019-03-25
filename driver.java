@@ -10,7 +10,7 @@ public class driver {
 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-/*	private static String message(String input, String desired, String output) {
+	private static String message(String input, String desired, String output) {
 		return String.format("\n%s\n\n\tDesired output:   %s\n\tYour output:      %s", input, desired, output);
 	}
 
@@ -361,9 +361,9 @@ public class driver {
 			System.out.printf("You had %d error(s). Summary:\n", out.size());
 			for (String s : out) System.out.println(s);
 		}
-	}*/
+	}
 
-
+/*
   public static void main(String[]args){
     MyDeque test1 = new MyDeque();
     System.out.println("trying toString of no initialCapacity");
@@ -372,24 +372,38 @@ public class driver {
     System.out.println("trying to add a value 1 using addFirst:");
     test1.addFirst(1);
     System.out.println(test1);
+
     System.out.println();
     System.out.println("trying to add a value 5 using addLast:");
     test1.addLast(5);
     System.out.println(test1);
+
     System.out.println();
     System.out.println("trying to add a value 3 using addLast:");
     test1.addLast(3);
     System.out.println(test1);
+
     System.out.println();
     System.out.println("trying to add a value 4 using addFirst:");
     test1.addFirst(4);
     System.out.println(test1);
+
     System.out.println();
     System.out.println("trying to getFirst which now should be 4");
     System.out.println(test1.getFirst());
+
     System.out.println();
     System.out.println("trying to getLast which now should be 3");
     System.out.println(test1.getLast());
 
-  }
+    System.out.println();
+    System.out.println("trying to remove a value using removeFirst, should remove 4:");
+    System.out.println(test1.removeFirst());
+    System.out.println(test1);
+
+    System.out.println();
+    System.out.println("trying to getFirst which now should be 1");
+    System.out.println(test1.getFirst());
+
+  }*/
 }

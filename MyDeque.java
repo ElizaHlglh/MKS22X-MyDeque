@@ -40,14 +40,25 @@ public class MyDeque<E>{
       return "{}";
     }
     String ans = "{";
-    for (int i = 0; i < data.length; i++){
+    /*for (int i = 0; i < data.length; i++){
       if (data[i] != null){
         ans += data[i] + " ";
       }
       else{
         ans += "  ";
       }
+    }*/
+    int i = start;
+    while (i != end){
+      if (i == data.length){
+        i = 0;
+      }
+      if (data[i] != null){
+        ans += data[i] + " ";
+      }
+      i++;
     }
+    ans += data[end];
     ans += "}";
     return ans;
   }
@@ -107,7 +118,12 @@ public class MyDeque<E>{
     }
     E temp = data[start];
     data[start] = null;
-    start++;
+    if (start == data.length-1){
+      start = 0;
+    }
+    else{
+      start++;
+    }
     size--;
     return temp;
   }
@@ -118,6 +134,9 @@ public class MyDeque<E>{
     }
     E temp = data[end];
     data[end] = null;
+    if (end == 0){
+      end = data.length-1;
+    }
     end--;
     size--;
     return temp;
