@@ -36,6 +36,7 @@ public class MyDeque<E>{
   }
 
   public String toString(){
+    //System.out.println("starting toString");
     if (size == 0){
       return "{}";
     }
@@ -50,13 +51,12 @@ public class MyDeque<E>{
     }*/
     int i = start;
     while (i != end){
-      if (i == data.length){
-        i = 0;
-      }
-      if (data[i] != null){
-        ans += data[i] + " ";
-      }
+      //System.out.println("i = " + i + "      end = " + end);
+      ans += data[i] + " ";
       i++;
+      if (i == data.length){
+        i = 0; //PROBLEM HERE!!!!!!!!!!!
+      }
     }
     ans += data[end];
     ans += "}";
@@ -64,17 +64,27 @@ public class MyDeque<E>{
   }
 
   public void addFirst(E element){
+    //System.out.println("array length is: " + data.length);
     if (!(element != null)){
       throw new NullPointerException("Can't add null to deque!!!");
     }
     if (start != -1){//if the array isn't empty
+    //System.out.println("size is = " + size);
+    //System.out.println("array length is: " + data.length);
       if (size == data.length){
+        //System.out.println("before resize(), length is: " + data.length);
         resize();
+        //System.out.println("after resize(), length is: " + data.length);
       }
       if (start == 0){//if current start is at 0, add the new element/start to the back of the array
+        //System.out.println("is the problem here?");
         data[data.length-1] = element;
         start = data.length-1;
+        //System.out.println("start is : " + start + "     end is : "+ end);
         size++;
+        //System.out.println(toString());
+        //System.out.println("current size =?" + size);
+        //System.out.println("array length is: " + data.length);
       }
       else{
         data[start-1] = element;
@@ -83,11 +93,15 @@ public class MyDeque<E>{
       }
     }
     else{//if the array is empty
+      //System.out.println(toString());
       start = 0;
       end = 0;
-      resize();
+      if (data.length == 0 || data.length == size){
+        resize();
+      }
       data[0] = element;
       size++;
+      //System.out.println(toString());
     }
   }
 
@@ -106,7 +120,9 @@ public class MyDeque<E>{
     else{//if array is empty
       start = 0;
       end = 0;
-      resize();
+      if (data.length == 0 || data.length == size){
+        resize();
+      }
       data[0] = element;
       size++;
     }
@@ -125,6 +141,10 @@ public class MyDeque<E>{
       start++;
     }
     size--;
+    if (size == 0){ //restart if everything is completely removed
+      end = -1;
+      start = -1;
+    }
     return temp;
   }
 
@@ -139,11 +159,16 @@ public class MyDeque<E>{
     }
     end--;
     size--;
+    if (size == 0){ //restart if everything is completely removed
+      end = -1;
+      start = -1;
+    }
     return temp;
   }
 
   public E getFirst(){
     if (size == 0){
+      System.out.println(start);
       throw new NoSuchElementException("Can't get anything from empty deque!!!");
     }
     return data[start];
@@ -151,6 +176,7 @@ public class MyDeque<E>{
 
   public E getLast(){
     if (size == 0){
+      System.out.println(end);
       throw new NoSuchElementException("Can't get anything from empty deque!!!");
     }
     return data[end];
@@ -158,6 +184,7 @@ public class MyDeque<E>{
 
   public void resize(){
     E[] copy = (E[])new Object[data.length*2 + 1];
+    //System.out.println("Copy's length" + copy.length);
     if (start == 0){//if there is no need for the array to put the part after start into the back of new array
       for (int i = 0; i < data.length; i++){
         copy[i] = data[i];
@@ -168,12 +195,15 @@ public class MyDeque<E>{
       int NewStart = copy.length - (data.length - start);
       start = NewStart;
       while (OldStart != end){
-        if (OldStart == data.length){
-          OldStart = 0;
-        }
         copy[NewStart] = data[OldStart];
         NewStart++;
         OldStart++;
+        if (OldStart == data.length){
+          OldStart = 0;
+        }
+        if (NewStart == copy.length){
+          NewStart = 0;
+        }
       }
       //after the while loop, the OldStart should be == to end and I need to add that end value to the copy array
       copy[NewStart] = data[OldStart];
