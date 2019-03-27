@@ -168,7 +168,6 @@ public class MyDeque<E>{
 
   public E getFirst(){
     if (size == 0){
-      System.out.println(start);
       throw new NoSuchElementException("Can't get anything from empty deque!!!");
     }
     return data[start];
@@ -176,7 +175,6 @@ public class MyDeque<E>{
 
   public E getLast(){
     if (size == 0){
-      System.out.println(end);
       throw new NoSuchElementException("Can't get anything from empty deque!!!");
     }
     return data[end];

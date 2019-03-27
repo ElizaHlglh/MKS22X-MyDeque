@@ -1,4 +1,4 @@
-/*import java.util.*;
+import java.util.*;
 
 public class driver {
 
@@ -10,7 +10,7 @@ public class driver {
 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-/*	private static String message(String input, String desired, String output) {
+	private static String message(String input, String desired, String output) {
 		return String.format("\n%s\n\n\tDesired output:   %s\n\tYour output:      %s", input, desired, output);
 	}
 
@@ -364,10 +364,10 @@ public class driver {
 	}
 
 }
-*/
 
 
 
+/*
 import java.util.*;
 
 public class driver {
@@ -379,7 +379,7 @@ public class driver {
 
 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
+/*
 	private static String message(String input, String desired, String output) {
 		return String.format("\n%s\n\n\tDesired output:   %s\n\tYour output:      %s", input, desired, output);
 	}
@@ -738,7 +738,7 @@ public class driver {
     System.out.println("call me AWESOME!!!!");
 	}
 }
-
+*/
 
 
 /*import java.util.*;
