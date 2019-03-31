@@ -821,7 +821,20 @@ import java.util.*;
 public class driver {
   public static void main(String[]args){
       Calculator test = new Calculator();
-      System.out.println("");
+      System.out.println("testing (10 2.0 +), should be == to 12.0");
       System.out.println(test.eval("10 2.0 +"));
+      System.out.println();
+
+      System.out.println("testing eval(11 3 - 4 + 2.5 *) is 30.0");
+      System.out.println(test.eval("11 3 - 4 + 2.5 *"));
+      System.out.println();
+
+      System.out.println("testing eval(8 2 + 99 9 - * 2 + 9 -) is 893.0");
+      System.out.println(test.eval("8 2 + 99 9 - * 2 + 9 -"));
+      System.out.println();
+
+      System.out.println("testing eval(1 2 3 4 5 + * - -) is 26.0");
+      System.out.println(test.eval("1 2 3 4 5 + * - -"));
+      System.out.println();
   }
 }

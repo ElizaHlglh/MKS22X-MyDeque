@@ -15,20 +15,52 @@ public class Calculator{
           System.out.println("number currently == " + number);
           System.out.println("number get first == " + number.getFirst());
           System.out.println("number get Last == " + number.getLast());*/
-          result = (double) number.removeLast() + (double) number.removeLast();
-          number.addLast(result);
+          if (number.size() >= 3){
+            double number1 = (double) number.removeFirst();
+            double number2 = (double) number.removeFirst();
+            result = number2 + number1;
+            number.addFirst(result);
+          }
+          else{
+            result = (double) number.removeLast() + (double) number.removeLast();
+            number.addLast(result);
+          }
         }
-        else if (info[i] == "-"){
-          result = (double) number.removeLast() - (double) number.removeLast();
-          number.addLast(result);
+        else if (info[i].equals("-")){
+          if (number.size() >= 3){
+            double number1 = (double) number.removeFirst();
+            double number2 = (double) number.removeFirst();
+            result = number2 - number1;
+            number.addFirst(result);
+          }
+          else{
+            result = (double) number.removeLast() - (double) number.removeLast();
+            number.addLast(result);
+          }
         }
-        else if (info[i] == "*"){
-          result = (double) number.removeLast() * (double) number.removeLast();
-          number.addLast(result);
+        else if (info[i].equals("*")){
+          if (number.size() >= 3){
+            double number1 = (double) number.removeFirst();
+            double number2 = (double) number.removeFirst();
+            result = number2 * number1;
+            number.addFirst(result);
+          }
+          else{
+            result = (double) number.removeLast() * (double) number.removeLast();
+            number.addLast(result);
+          }
         }
-        else if (info[i] == "/"){
-          result = (double) number.removeLast() / (double) number.removeLast();
-          number.addLast(result);
+        else if (info[i].equals("/")){
+          if (number.size() >= 3){
+            double number1 = (double) number.removeFirst();
+            double number2 = (double) number.removeFirst();
+            result = number2 / number1;
+            number.addFirst(result);
+          }
+          else{
+            result = (double) number.removeLast() / (double) number.removeLast();
+            number.addLast(result);
+          }
         }
         else{//the string contains a number
           number.addFirst(Double.parseDouble(info[i]));
