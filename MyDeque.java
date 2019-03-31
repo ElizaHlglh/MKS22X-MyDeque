@@ -157,7 +157,9 @@ public class MyDeque<E>{
     if (end == 0){
       end = data.length-1;
     }
-    end--;
+    else{
+      end--;
+    }
     size--;
     if (size == 0){ //restart if everything is completely removed
       end = -1;

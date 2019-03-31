@@ -1,4 +1,4 @@
-import java.util.*;
+/*import java.util.*;
 
 public class driver {
 
@@ -9,7 +9,7 @@ public class driver {
 
 
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
+/*
 	private static String message(String input, String desired, String output) {
 		return String.format("\n%s\n\n\tDesired output:   %s\n\tYour output:      %s", input, desired, output);
 	}
@@ -364,7 +364,7 @@ public class driver {
 	}
 
 }
-
+*/
 
 
 /*
@@ -815,3 +815,13 @@ System.out.println();
   }
 }
 */
+
+import java.util.*;
+
+public class driver {
+  public static void main(String[]args){
+      Calculator test = new Calculator();
+      System.out.println("");
+      System.out.println(test.eval("10 2.0 +"));
+  }
+}

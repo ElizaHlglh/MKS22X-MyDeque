@@ -3,28 +3,37 @@ public class Calculator{
      *Assume valid postfix notation, separated by spaces.
      */
     public static double eval(String s){
-      /*String info = "";
-      int previousSpace = 0;
-      for (int i = 0; i < s.length(); i++){
-        if (s.charAt(i) == ' '){
-          if (previousSpace == 0){
-            info = s.substring(previousSpace, i);
-            //ans.add(Integer.parseInt(info.substring(previousSpace, i)));
-            previousSpace = i;
-          }
-          else{
-            info = s.substring(previousSpace+1, i);
-            //ans.add(Integer.parseInt(info.substring(previousSpace+1, i)));
-            previousSpace = i;
-          }
+      String[] info = s.split(" ");
+      MyDeque number = new MyDeque<Double>();
+      double result;
+      for (int i = 0; i < info.length; i++){
+        if (info[i].equals("+")){
+          //result = (number.removeLast() + 0.0) + (number.removeLast() + 0.0);
+          /*double last1 = (double)number.removeLast();
+          System.out.println("number get before Last == " + number.getLast());
+          System.out.println("Last1 == " + last1);
+          System.out.println("number currently == " + number);
+          System.out.println("number get first == " + number.getFirst());
+          System.out.println("number get Last == " + number.getLast());*/
+          result = (double) number.removeLast() + (double) number.removeLast();
+          number.addLast(result);
+        }
+        else if (info[i] == "-"){
+          result = (double) number.removeLast() - (double) number.removeLast();
+          number.addLast(result);
+        }
+        else if (info[i] == "*"){
+          result = (double) number.removeLast() * (double) number.removeLast();
+          number.addLast(result);
+        }
+        else if (info[i] == "/"){
+          result = (double) number.removeLast() / (double) number.removeLast();
+          number.addLast(result);
+        }
+        else{//the string contains a number
+          number.addFirst(Double.parseDouble(info[i]));
         }
       }
-      ans.add(Integer.parseInt(info.substring(previousSpace+1,info.length())));
-      return ans;*/
-      String[] info = s.split(" ");
-      for (int i = 0; i< info.length; i++){
-        System.out.println(info[i]);
-      }
-      return 1.0;
+      return (double) number.getLast();
     }
 }
